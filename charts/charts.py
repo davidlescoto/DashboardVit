@@ -1,9 +1,10 @@
 
-from charts.colors import graphics_colors as gc
+
 import plotly.graph_objects as go
 import dash_bootstrap_components as dbc
-from plotly.subplots import make_subplots
 from charts.template import chart_template
+
+
 
 chart_template(dark = True)
 
@@ -101,4 +102,39 @@ def bar_chart(dff, x,y, formato = ",.2f", unidades = "L", name = "y"):
         tickfont   = dict(size = 8))
     fig.update_traces( textposition="auto", textfont_size=10)
     fig.update_layout( uniformtext_minsize=12)
+    return fig
+
+
+def bar_group(dff, x, y):
+    y_values = dff[y].unique()
+    data = []
+    for value in y_values:
+        dfff = dff[dff[y]==value]
+        dfff = dfff.groupby([x]).count().reset_index()
+        xx = dfff[x].to_list()
+        yy = dfff[y].to_list()
+        data.append(go.Bar(name = value, x = xx ,y = yy ))
+
+
+    fig = go.Figure(data=data)
+    # Change the bar mode
+    fig.update_layout(barmode='group')
+    return fig
+
+def bar_group_cohor(dff, x, y, values):
+
+    y_values = dff[y].unique()
+    data = []
+    
+    for value in y_values:
+        dfff = dff[dff[y]==value]
+        
+        xx = [str(index) for index in dfff[x].to_list()]
+        yy = dfff[values].to_list()
+        data.append(go.Bar(name = value, x = xx ,y = yy ))
+
+
+    fig = go.Figure(data=data)
+    # Change the bar mode
+    fig.update_layout(barmode='group')
     return fig

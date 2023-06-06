@@ -9,7 +9,7 @@ from dash import html
 
 app = dash.Dash(__name__, pages_folder = "../pages",use_pages=True)
 #server = app.server
-app._favicon = ("favicon_urc.ico")
+app._favicon = ("favicon.ico")
 header = dbc.Navbar(
     dbc.Container(
         [
@@ -29,7 +29,7 @@ header = dbc.Navbar(
 	    	    dbc.Row(
                     [
                         
-                        dbc.Col(dbc.NavbarBrand("Dashboard|Enterprise", className="ms-2", style = {'font-size':'10px'})),
+                        dbc.Col(dbc.NavbarBrand("Dashboard|Vitesse", className="ms-2", style = {'font-size':'10px'})),
                     ])
         ],
         fluid=True,
