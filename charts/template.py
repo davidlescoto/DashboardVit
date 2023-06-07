@@ -27,27 +27,10 @@ def chart_template(dark = False):
             )
 
 
-    layout_images=[
-        dict(
-            name="imageName",
-            source="INJUPEMP - Edited.png",
-            xref = 'paper',
-            yref="paper",
-            x=1.01, 
-            y=0,
-            sizex=0.2, 
-            sizey=0.2,
-
-        )
-    ]
-
-    pio.templates["components"] = go.layout.Template( 
-        layout_images = layout_images
-    ) 
 
 
     pio.templates["update_layout"] = dict(
         layout = layout,
         )
 
-    pio.templates.default = f"{template}+update_layout+components"
+    pio.templates.default = f"{template}+update_layout"
