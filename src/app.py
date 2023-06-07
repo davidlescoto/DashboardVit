@@ -8,7 +8,7 @@ from dash import html
 #external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, pages_folder = "../pages",use_pages=True)
-#server = app.server
+server = app.server
 app._favicon = ("favicon.ico")
 header = dbc.Navbar(
     dbc.Container(
